@@ -8,13 +8,15 @@
         <ToolbarItem Text="Remove" Clicked="DeleteButton_Clicked" IconImageSource="{FontImage Glyph='🗑️', Color=White, Size=22}" />
     </ContentPage.ToolbarItems>
 
-    <VerticalStackLayout Spacing="10" Margin="5">
-        <Editor x:Name="TextEditor"
-                FontSize="18"
-                Placeholder="Enter your note"
-                Text="{Binding Text}"
-                MinimumHeightRequest="100"
-                AutoSize="TextChanges"
-                TextChanged="TextEditor_TextChanged" />
-    </VerticalStackLayout>
+    <ScrollView Margin="5">
+        <Grid ColumnDefinitions="*">
+            <Editor x:Name="TextEditor"
+                    FontSize="18"
+                    Placeholder="Enter your note"
+                    Text="{Binding Text}"
+                    MinimumHeightRequest="100"
+                    AutoSize="TextChanges"
+                    TextChanged="TextEditor_TextChanged" />
+        </Grid>
+    </ScrollView>
 </ContentPage>
