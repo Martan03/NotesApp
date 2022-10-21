@@ -6,16 +6,9 @@
     xmlns:views="clr-namespace:NoteTaking.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <TabBar>
-        <ShellContent
-            Title="Notes"
-            ContentTemplate="{DataTemplate views:AllNotesPage}"
-            Icon="icon_notes" />
-
-        <ShellContent
-            Title="About"
-            ContentTemplate="{DataTemplate views:AboutPage}"
-            Icon="icon_about" />
-    </TabBar>
+    <ShellContent
+        Title="Notes"
+        ContentTemplate="{DataTemplate views:AllNotesPage}"
+        Route="AllNotesPage" />
 
 </Shell>

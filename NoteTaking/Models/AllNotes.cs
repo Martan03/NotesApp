@@ -23,7 +23,7 @@ namespace NoteTaking.Models
                                             Text = File.ReadAllText(filename),
                                             Date = File.GetCreationTime(filename)
                                         })
-                                        .OrderBy(note => note.Date);
+                                        .OrderByDescending(note => note.Date);
 
             foreach (Note note in notes)
                 Notes.Add(note);

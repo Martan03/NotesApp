@@ -32,14 +32,6 @@ public partial class NotePage : ContentPage
 		BindingContext = noteModel;
 	}
 
-	private async void SaveButton_Clicked(object sender, EventArgs e)
-	{
-		if (BindingContext is Models.Note note)
-			File.WriteAllText(note.Filename, TextEditor.Text);
-
-		await Shell.Current.GoToAsync("..");
-	}
-
 	private async void DeleteButton_Clicked(object sender, EventArgs e)
 	{
 		if (BindingContext is Models.Note note)
@@ -49,5 +41,11 @@ public partial class NotePage : ContentPage
 		}
 
 		await Shell.Current.GoToAsync("..");
+	}
+
+	private void TextEditor_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		if (BindingContext is Models.Note note)
+			File.WriteAllText(note.Filename, TextEditor.Text);
 	}
 }
