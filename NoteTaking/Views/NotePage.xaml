@@ -10,7 +10,7 @@
 
     <Grid ColumnDefinitions="*" RowDefinitions="*">
         <ScrollView Margin="5">
-                <Editor x:Name="TextEditor"
+            <Editor x:Name="TextEditor"
                         FontSize="18"
                         Placeholder="Enter your note"
                         Text="{Binding Text}"

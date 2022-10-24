@@ -31,8 +31,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\pencilicon.png" />
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splashlogo.png" BaseSize="128,128" />
 
@@ -48,6 +46,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\pencilicon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\AllNotesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -55,5 +57,5 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
-
+  
 </Project>
