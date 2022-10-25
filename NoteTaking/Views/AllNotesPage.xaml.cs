@@ -30,4 +30,23 @@ public partial class AllNotesPage : ContentPage
 			notesCollection.SelectedItem = null;
 		}
 	}
+
+	private async void NoteCard_Tapped(object sender, EventArgs e)
+	{
+		var note = ((VisualElement)sender).BindingContext as Models.Note;
+
+		if (note is null)
+			return;
+
+		await Shell.Current.GoToAsync($"{nameof(NotePage)}?{nameof(NotePage.ItemId)}={note.Filename}");
+	}
+
+	private void RemoveNote_Invoked(object sender, EventArgs e)
+    {
+		var note = ((SwipeItem)sender).BindingContext as Models.Note;
+
+		if (File.Exists(note.Filename))
+			File.Delete(note.Filename);
+		BindingContext = new Models.AllNotes();
+    }
 }

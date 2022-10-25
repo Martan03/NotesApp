@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:NoteTaking.Models"
              x:Class="NoteTaking.Views.AllNotesPage"
              Title="Your Notes">
 
@@ -11,21 +12,38 @@
     <CollectionView x:Name="notesCollection"
                     ItemsSource="{Binding Notes}"
                     Margin="20"
-                    SelectionMode="Single"
-                    SelectionChanged="notesCollection_SelectionChanged">
+                    SelectionMode="None">
 
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
         </CollectionView.ItemsLayout>
 
         <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid ColumnDefinitions="*">
-                    <StackLayout>
-                        <Label Text="{Binding Text}" FontSize="22" LineBreakMode="TailTruncation" MaxLines="1" />
-                        <Label Text="{Binding Date}" FontSize="14" TextColor="Silver" />
-                    </StackLayout>
-                </Grid>
+            <DataTemplate x:DataType="models:Note">
+                <Border Stroke="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10" />
+                    </Border.StrokeShape>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItem Text="Remove"
+                                       BackgroundColor="#dd0000"
+                                       Invoked="RemoveNote_Invoked" />
+                        </SwipeView.RightItems>
+
+                        <Frame>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="NoteCard_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid ColumnDefinitions="*">
+                                <StackLayout>
+                                    <Label Text="{Binding Text}" FontSize="22" LineBreakMode="TailTruncation" MaxLines="1" />
+                                    <Label Text="{Binding Date}" FontSize="14" TextColor="Silver" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
+                </Border>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
