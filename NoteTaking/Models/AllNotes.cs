@@ -13,10 +13,12 @@ namespace NoteTaking.Models
         {
             Notes.Clear();
 
-            string appDataPath = FileSystem.AppDataDirectory;
+            string appDataPath = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Pencotes");
+            if (!Directory.Exists(appDataPath))
+                Directory.CreateDirectory(appDataPath);
 
             IEnumerable<Note> notes = Directory
-                                        .EnumerateFiles(appDataPath, "*.notes.txt")
+                                        .EnumerateFiles(appDataPath, "*.txt")
                                         .Select(filename => new Note()
                                         {
                                             Filename = filename,
@@ -24,7 +26,6 @@ namespace NoteTaking.Models
                                             Date = File.GetCreationTime(filename)
                                         })
                                         .OrderByDescending(note => note.Date);
-
             foreach (Note note in notes)
                 Notes.Add(note);
         }

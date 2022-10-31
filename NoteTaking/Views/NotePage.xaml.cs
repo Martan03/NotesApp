@@ -12,8 +12,8 @@ public partial class NotePage : ContentPage
 	{
 		InitializeComponent();
 
-		string appDataPath = FileSystem.AppDataDirectory;
-		string randomFileName = $"{Path.GetRandomFileName()}.notes.txt";
+		string appDataPath = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Pencotes");
+        string randomFileName = $"{Path.GetRandomFileName()}.txt";
 
 		LoadNote(Path.Combine(appDataPath, randomFileName));
 	}
