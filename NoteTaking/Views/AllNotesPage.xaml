@@ -28,7 +28,8 @@
                         <SwipeView.RightItems>
                             <SwipeItem Text="Remove"
                                        BackgroundColor="#dd0000"
-                                       Invoked="RemoveNote_Invoked" />
+                                       Invoked="RemoveNote_Invoked"
+                                       IconImageSource="{FontImage Glyph='🗑️', Color=White, Size=100}" />
                         </SwipeView.RightItems>
 
                         <Frame>

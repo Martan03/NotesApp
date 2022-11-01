@@ -45,7 +45,8 @@ public partial class NotePage : ContentPage
 
 	private void TextEditor_TextChanged(object sender, TextChangedEventArgs e)
 	{
-		if (BindingContext is Models.Note note)
+
+        if (BindingContext is Models.Note note)
 			File.WriteAllText(note.Filename, TextEditor.Text);
 	}
 }
