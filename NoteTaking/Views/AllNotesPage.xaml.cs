@@ -21,14 +21,14 @@ public partial class AllNotesPage : ContentPage
 
 	private async void notesCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-		if (e.CurrentSelection.Count != 0)
-		{
-			var note = (Models.Note)e.CurrentSelection[0];
+		if (e.CurrentSelection.Count == 0)
+			return;
 
-			await Shell.Current.GoToAsync($"{nameof(NotePage)}?{nameof(NotePage.ItemId)}={note.Filename}");
+		var note = (Models.Note)e.CurrentSelection[0];
 
-			notesCollection.SelectedItem = null;
-		}
+		await Shell.Current.GoToAsync($"{nameof(NotePage)}?{nameof(NotePage.ItemId)}={note.Filename}");
+
+		notesCollection.SelectedItem = null;
 	}
 
 	private async void NoteCard_Tapped(object sender, EventArgs e)
