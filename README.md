@@ -15,3 +15,7 @@ Good to mention:
 Notes are being saved automatically
 
 (it's really that simple app (: )
+
+Links:  
+[Author GitHub](https://github.com/Martan03)  
+[Author website](https://martan03.github.io/Portfolio/)
